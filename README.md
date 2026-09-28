@@ -10,7 +10,7 @@
 
 Collect book metadata from the [Open Library Public Search API](https://openlibrary.org/developers/api) and export it to a clean, Excel-ready CSV file.
 
-The script fetches **55 books** for a search query, keeps only the titles whose **first publication year is strictly greater than 2000**, and writes the result to a CSV file encoded with `utf-8-sig` (UTF-8 with a byte-order mark), so the file opens without mojibake in Microsoft Excel.
+The script fetches **50 books** for a search query, keeps only the titles whose **first publication year is strictly greater than 2000**, and writes the result to a CSV file encoded with `utf-8-sig` (UTF-8 with a byte-order mark), so the file opens without mojibake in Microsoft Excel.
 
 ---
 
@@ -85,7 +85,7 @@ The script also runs without the `requirements.txt` step if `requests` is alread
 
 ## Usage
 
-Run with the defaults — query `programming`, fetch 55 books, keep those first published after 2000, write `openlibrary_books.csv`:
+Run with the defaults — query `programming`, fetch 50 books, keep those first published after 2000, write `openlibrary_books.csv`:
 
 ```bash
 python openlibrary_collector.py
@@ -94,8 +94,8 @@ python openlibrary_collector.py
 Expected console output:
 
 ```text
-INFO: Fetched 55 book(s) for query 'programming'.
-INFO: 52 of 55 book(s) were first published after 2000.
+INFO: Fetched 50 book(s) for query 'programming'.
+INFO: 52 of 50 book(s) were first published after 2000.
 INFO: Wrote 52 row(s) to 'openlibrary_books.csv'.
 ```
 
@@ -120,7 +120,7 @@ python openlibrary_collector.py --verbose
 | Option | Default | Description |
 | ------ | ------- | ----------- |
 | `--query` | `programming` | Search query sent to Open Library. |
-| `--limit` | `55` | Maximum number of valid books to fetch. |
+| `--limit` | `50` | Maximum number of valid books to fetch. |
 | `--min-year` | `2000` | Keep books whose `first_publish_year` is **strictly greater** than this value. |
 | `--output` | `openlibrary_books.csv` | Destination CSV file, written with `utf-8-sig`. |
 | `--timeout` | `30` | Per-request HTTP timeout, in seconds. |
@@ -132,7 +132,7 @@ The script is also importable as a library:
 ```python
 from openlibrary_collector import fetch_books, filter_books, write_csv
 
-books = fetch_books(query="science", limit=55)
+books = fetch_books(query="science", limit=50)
 recent = filter_books(books, min_year=2000)
 write_csv(recent, "science_books.csv")
 ```
@@ -320,8 +320,8 @@ python openlibrary_collector.py
 خروجی مورد انتظار در کنسول:
 
 ```text
-INFO: Fetched 55 book(s) for query 'programming'.
-INFO: 52 of 55 book(s) were first published after 2000.
+INFO: Fetched 50 book(s) for query 'programming'.
+INFO: 52 of 50 book(s) were first published after 2000.
 INFO: Wrote 52 row(s) to 'openlibrary_books.csv'.
 ```
 
@@ -348,7 +348,7 @@ python openlibrary_collector.py --verbose
 | گزینه | پیش‌فرض | توضیح |
 | ----- | ------- | ----- |
 | `--query` | `programming` | عبارت جستجو که به Open Library ارسال می‌شود. |
-| `--limit` | `55` | حداکثر تعداد کتاب‌های معتبر برای دریافت. |
+| `--limit` | `50` | حداکثر تعداد کتاب‌های معتبر برای دریافت. |
 | `--min-year` | `2000` | کتاب‌هایی نگه داشته می‌شوند که `first_publish_year` آن‌ها **به‌طور اکید بزرگ‌تر** از این مقدار باشد. |
 | `--output` | `openlibrary_books.csv` | فایل CSV مقصد که با `utf-8-sig` نوشته می‌شود. |
 | `--timeout` | `30` | مهلت هر درخواست HTTP بر حسب ثانیه. |
@@ -360,7 +360,7 @@ python openlibrary_collector.py --verbose
 ```python
 from openlibrary_collector import fetch_books, filter_books, write_csv
 
-books = fetch_books(query="science", limit=55)
+books = fetch_books(query="science", limit=50)
 recent = filter_books(books, min_year=2000)
 write_csv(recent, "science_books.csv")
 ```

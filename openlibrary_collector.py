@@ -8,7 +8,7 @@ cleanly in Microsoft Excel.
 Example
 -------
     python openlibrary_collector.py
-    python openlibrary_collector.py --query science --limit 55 --output science.csv
+    python openlibrary_collector.py --query science --limit 50 --output science.csv
 """
 
 from __future__ import annotations
@@ -45,7 +45,7 @@ __all__ = [
 API_URL = "https://openlibrary.org/search.json"
 USER_AGENT = "open-library-collector/1.0 (https://github.com/; educational use)"
 DEFAULT_QUERY = "programming"
-DEFAULT_LIMIT = 55
+DEFAULT_LIMIT = 50
 DEFAULT_MIN_YEAR = 2000
 DEFAULT_OUTPUT = "openlibrary_books.csv"
 DEFAULT_TIMEOUT = 60
